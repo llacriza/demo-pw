@@ -4,7 +4,8 @@ import {faker} from "@faker-js/faker/locale/ar";
 test.beforeEach(async ({ page }) => {
 
 
-    await page.goto(process.env.APP_URL);
+    await page.goto('/');
+
 
 })
 
@@ -27,6 +28,7 @@ test('Popup appears after sign in clicking when name and pass not correct ENG', 
     await page.fill('#password', randomPassword);
     await signInButton.click();
     await expect(popupMessage).toBeVisible();
+    console.log(await popupMessage.textContent());
     await expect(popupMessage).toHaveText(`×Incorrect credentials`
     );
 });
@@ -43,6 +45,7 @@ test('Popup appears after sign in clicking when name and pass not correct RU', a
     await page.fill('#password', randomPassword);
     await signInButton.click();
     await expect(popupMessage).toBeVisible();
+    console.log(await popupMessage.textContent());
     await expect(popupMessage).toHaveText(`×Неверные учетные данные`
     );
 });
