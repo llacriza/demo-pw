@@ -21,7 +21,7 @@ test('button enabled after filling correct data', async ({ page }) => {
     const email: Locator = page.getByTestId('email');
     await userName.fill('John');
     await email.fill('test@mail.ru');
-    expect(orderButton).toBeEnabled();
+    await expect(orderButton).toBeEnabled({timeout: 5000});
 });
 
 test('popup is visible', async ({ page }) => {
